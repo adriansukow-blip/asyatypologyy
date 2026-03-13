@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows XP Professional Setup</title>
+  <title>Типологии Аси</title>
   <style>
     html, body {
       margin: 0;
@@ -38,13 +38,12 @@
     #startOverlay {
       position: absolute;
       inset: 0;
-      background: #000;
+      background: linear-gradient(to bottom, #0b58b2 0%, #0a4d9a 45%, #073b78 100%);
       color: #fff;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Tahoma, Arial, sans-serif;
       text-align: center;
       padding: 20px;
       box-sizing: border-box;
@@ -59,21 +58,21 @@
     }
 
     .start-title {
-      font-size: 34px;
+      font-size: 42px;
       font-weight: bold;
-      margin-bottom: 14px;
-      letter-spacing: -0.4px;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
 
     .start-text {
-      font-size: 18px;
-      opacity: 0.9;
+      font-size: 22px;
+      opacity: 0.95;
       margin-bottom: 12px;
     }
 
     .start-small {
       font-size: 13px;
-      opacity: 0.65;
+      opacity: 0.7;
     }
 
     /* BOOT SCREEN */
@@ -382,87 +381,55 @@
       background: linear-gradient(to bottom, #f7f7f7 0%, #dddddd 100%);
     }
 
-    /* ERROR DIALOG */
-    #errorDialog {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: min(500px, calc(100vw - 34px));
-      transform: translate(-50%, -50%);
+    /* FINISH SCREEN */
+    #finishScreen {
       background: #ece9d8;
-      border: 1px solid #0a246a;
-      box-shadow: 0 14px 35px rgba(0,0,0,0.45);
+      color: #000;
       display: none;
-      z-index: 30;
-    }
-
-    #errorDialog.show {
-      display: block;
-    }
-
-    .dlg-titlebar {
-      height: 30px;
-      background: linear-gradient(to right, #0a246a 0%, #3a6ea5 100%);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 8px 0 10px;
-      box-sizing: border-box;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .dlg-close {
-      width: 20px;
-      height: 18px;
-      border: 1px solid #fff;
-      background: #c0504d;
-      color: #fff;
-      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      line-height: 1;
+      text-align: center;
+      padding: 30px;
       box-sizing: border-box;
     }
 
-    .dlg-body {
-      padding: 18px 16px 12px;
+    #finishScreen.show {
       display: flex;
-      gap: 14px;
+    }
+
+    .finish-box {
+      width: min(700px, 100%);
+      background: #ffffff;
+      border: 1px solid #7f9db9;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+      padding: 32px 28px;
       box-sizing: border-box;
-      font-size: 13px;
+    }
+
+    .finish-title {
+      font-size: 34px;
+      color: #003399;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .finish-text {
+      font-size: 20px;
+      margin-bottom: 12px;
       line-height: 1.45;
-      color: #000;
     }
 
-    .dlg-icon {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-      border-radius: 50%;
-      background: #ffd34d;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
-      font-size: 24px;
-      font-weight: bold;
+    .finish-subtext {
+      font-size: 17px;
+      color: #333;
+      line-height: 1.5;
+      margin-bottom: 28px;
     }
 
-    .dlg-buttons {
-      display: flex;
-      justify-content: center;
-      padding: 0 16px 16px;
-      box-sizing: border-box;
-    }
-
-    .dlg-btn {
-      min-width: 86px;
-      height: 26px;
-      font-size: 12px;
+    .finish-btn {
+      min-width: 170px;
+      height: 42px;
+      font-size: 16px;
       font-family: Tahoma, Arial, sans-serif;
       border: 1px solid #003c74;
       background: linear-gradient(to bottom, #fefefe 0%, #d6e8ff 100%);
@@ -483,29 +450,6 @@
 
     #flash.show {
       opacity: 0.95;
-    }
-
-    /* BSOD */
-    #bsod {
-      background: #0000aa;
-      color: #fff;
-      font-family: "Lucida Console", Consolas, monospace;
-      padding: 28px 34px;
-      box-sizing: border-box;
-      z-index: 40;
-    }
-
-    .bsod-text {
-      font-size: 19px;
-      line-height: 1.55;
-      white-space: pre-line;
-    }
-
-    .bsod-small {
-      margin-top: 26px;
-      font-size: 18px;
-      line-height: 1.6;
-      white-space: pre-line;
     }
 
     /* FAKE CURSOR */
@@ -539,11 +483,12 @@
   <div id="app">
 
     <div id="startOverlay">
-  <div class="start-box">
-    <div class="start-title">Типологии Аси</div>
-    <div class="start-text">Нажмите, чтобы посмотреть</div>
-  </div>
-</div>
+      <div class="start-box">
+        <div class="start-title">Типологии Аси</div>
+        <div class="start-text">Нажмите, чтобы посмотреть</div>
+        <div class="start-small">После клика начнётся запуск программы.</div>
+      </div>
+    </div>
 
     <div id="bootScreen" class="screen">
       <div id="bootLines"></div>
@@ -645,71 +590,18 @@
       </div>
     </div>
 
-    <div id="errorDialog">
-      <div class="dlg-titlebar">
-        <span>Windows XP Professional Setup</span>
-        <span class="dlg-close">×</span>
-      </div>
-
-      <div class="dlg-body">
-        <div class="dlg-icon">!</div>
-        <div>
-          <div><b>Setup cannot continue.</b></div>
-          <div style="margin-top: 8px;">
-            Setup has detected a fatal error while initializing display settings.
-          </div>
-          <div style="margin-top: 8px;">
-            The installation process will be terminated.
-          </div>
-          <div style="margin-top: 8px;">
-            Error code: 0x7E-XPSETUP-DISPLAYMEM
-          </div>
+    <div id="finishScreen" class="screen">
+      <div class="finish-box">
+        <div class="finish-title">Установка завершена</div>
+        <div class="finish-text">Программа успешно установлена.</div>
+        <div class="finish-subtext">
+          Чтобы открыть программу, необходимо перезапустить устройство.
         </div>
-      </div>
-
-      <div class="dlg-buttons">
-        <button class="dlg-btn" id="okBtn">OK</button>
+        <button class="finish-btn" id="restartBtn">Перезапустить</button>
       </div>
     </div>
 
     <div id="flash"></div>
-
-    <div id="bsod" class="screen">
-      <div class="bsod-text">
-A problem has been detected and Windows has been shut down to prevent damage
-to your computer.
-
-UNMOUNTABLE_BOOT_VOLUME
-
-If this is the first time you've seen this Stop error screen,
-restart your computer. If this screen appears again, follow
-these steps:
-
-Check to make sure any new hardware or software is properly installed.
-If this is a new installation, ask your hardware or software manufacturer
-for any Windows updates you might need.
-
-If problems continue, disable or remove any newly installed hardware
-or software. Disable BIOS memory options such as caching or shadowing.
-If you need to use Safe Mode to remove or disable components, restart
-your computer, press F8 to select Advanced Startup Options, and then
-select Safe Mode.
-      </div>
-
-      <div class="bsod-small">
-Technical information:
-
-*** STOP: 0x000000ED (0x81F89E30, 0xC0000032, 0x00000000, 0x00000000)
-
-Beginning dump of physical memory
-Physical memory dump complete.
-
-Contact your system administrator or technical support group for further
-assistance.
-
-Press any key to restart
-      </div>
-    </div>
 
     <div id="fakeCursor">
       <svg viewBox="0 0 18 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -724,7 +616,8 @@ Press any key to restart
     const bootScreen = document.getElementById("bootScreen");
     const bootLines = document.getElementById("bootLines");
     const xpSetup = document.getElementById("xpSetup");
-    const bsod = document.getElementById("bsod");
+    const finishScreen = document.getElementById("finishScreen");
+    const restartBtn = document.getElementById("restartBtn");
     const fakeCursor = document.getElementById("fakeCursor");
 
     const mainBar = document.getElementById("mainBar");
@@ -739,14 +632,11 @@ Press any key to restart
 
     const step3 = document.getElementById("step3");
     const step4 = document.getElementById("step4");
-
-    const errorDialog = document.getElementById("errorDialog");
-    const okBtn = document.getElementById("okBtn");
     const flash = document.getElementById("flash");
 
     let progress = 0;
-    let crashed = false;
-    let autoCrashTriggered = false;
+    let completed = false;
+    let autoFinishTriggered = false;
     let remainingMinutes = 39;
     let fakeCursorActive = false;
     let audioCtx = null;
@@ -760,7 +650,7 @@ Press any key to restart
       "Scanning IDE devices...",
       "Loading display components...",
       "",
-      "Press F6 if you need to install a third party SCSI or RAID driver..."
+      "Setup is preparing Typologies..."
     ];
 
     const tasks = [
@@ -787,7 +677,6 @@ Press any key to restart
       "Setup Engine",
       "System Files",
       "Driver Package",
-      "Display Components",
       "Registry",
       "Network Stack",
       "Shell Services",
@@ -827,9 +716,7 @@ Press any key to restart
       "system32\\mspaint.exe",
       "system32\\dxdiagn.dll",
       "system32\\wininet.dll",
-      "system32\\urlmon.dll",
-      "system32\\drivers\\videoprt.sys",
-      "system32\\drivers\\vgaSave.sys"
+      "system32\\urlmon.dll"
     ];
 
     function rand(min, max) {
@@ -871,7 +758,7 @@ Press any key to restart
       }
     }
 
-    function tone(freq, start, duration, type = "square", volume = 0.035) {
+    function tone(freq, start, duration, type = "square", volume = 0.03) {
       if (!audioCtx) return;
 
       const osc = audioCtx.createOscillator();
@@ -898,17 +785,12 @@ Press any key to restart
       tone(880, now + 0.10, 0.10, "square", 0.02);
     }
 
-    function playErrorBeep() {
+    function playFinishBeep() {
       ensureAudioContext();
       const now = audioCtx.currentTime;
-      tone(210, now, 0.16, "square", 0.04);
-      tone(160, now + 0.18, 0.28, "square", 0.04);
-    }
-
-    function playBsodTone() {
-      ensureAudioContext();
-      const now = audioCtx.currentTime;
-      tone(145, now, 0.72, "sawtooth", 0.025);
+      tone(523.25, now, 0.10, "square", 0.02);
+      tone(659.25, now + 0.12, 0.10, "square", 0.02);
+      tone(783.99, now + 0.24, 0.16, "square", 0.02);
     }
 
     function updateRemainingTime() {
@@ -920,9 +802,14 @@ Press any key to restart
       else if (progress < 58) remainingMinutes = 14;
       else if (progress < 68) remainingMinutes = 9;
       else if (progress < 76) remainingMinutes = 4;
-      else remainingMinutes = 1;
+      else if (progress < 90) remainingMinutes = 1;
+      else remainingMinutes = 0;
 
-      timeRemaining.textContent = remainingMinutes + " minute" + (remainingMinutes === 1 ? "" : "s");
+      if (remainingMinutes === 0) {
+        timeRemaining.textContent = "Completing";
+      } else {
+        timeRemaining.textContent = remainingMinutes + " minute" + (remainingMinutes === 1 ? "" : "s");
+      }
     }
 
     function updateSteps() {
@@ -953,12 +840,12 @@ Press any key to restart
 
       if (progress < 70) {
         statusText.textContent = "Normal";
-      } else if (progress < 78) {
-        statusText.textContent = "Optimizing";
       } else if (progress < 82) {
+        statusText.textContent = "Optimizing";
+      } else if (progress < 95) {
         statusText.textContent = "Applying settings";
       } else {
-        statusText.textContent = "Warning";
+        statusText.textContent = "Complete";
       }
 
       updateRemainingTime();
@@ -988,26 +875,16 @@ Press any key to restart
       startSetupPhase();
     }
 
-    function showErrorDialog() {
-      if (crashed) return;
-      crashed = true;
-      flashScreen();
-
-      setTimeout(() => {
-        errorDialog.classList.add("show");
-        playErrorBeep();
-      }, 120);
-    }
-
-    function showBsod() {
-      errorDialog.classList.remove("show");
+    function showFinishScreen() {
+      if (completed) return;
+      completed = true;
       fakeCursorActive = false;
       fakeCursor.classList.remove("show");
       flashScreen();
 
       setTimeout(() => {
-        showScreen(bsod);
-        playBsodTone();
+        showScreen(finishScreen);
+        playFinishBeep();
       }, 120);
     }
 
@@ -1018,7 +895,7 @@ Press any key to restart
       addLog("Preparing installation engine...");
 
       const logTimer = setInterval(() => {
-        if (crashed) {
+        if (completed) {
           clearInterval(logTimer);
           return;
         }
@@ -1044,7 +921,7 @@ Press any key to restart
       }, 190);
 
       const progressTimer = setInterval(() => {
-        if (crashed) {
+        if (completed) {
           clearInterval(progressTimer);
           return;
         }
@@ -1053,34 +930,29 @@ Press any key to restart
         if (progress > 100) progress = 100;
         updateUI();
 
-        if (!autoCrashTriggered && progress >= 82) {
-          autoCrashTriggered = true;
+        if (!autoFinishTriggered && progress >= 100) {
+          autoFinishTriggered = true;
           clearInterval(progressTimer);
 
-          addLog("Initializing display settings...");
-          fileNow.textContent = "Initializing display settings...";
+          addLog("Finalizing installation...");
+          fileNow.textContent = "Finalizing installation...";
 
           setTimeout(() => {
-            addLog("Loading display driver: vgaSave.sys");
-            fileNow.textContent = "Loading display driver: vgaSave.sys";
+            addLog("Saving configuration...");
+            fileNow.textContent = "Saving configuration...";
           }, 260);
 
           setTimeout(() => {
-            addLog("Applying screen configuration...");
-            fileNow.textContent = "Applying screen configuration...";
+            addLog("Cleaning temporary setup files...");
+            fileNow.textContent = "Cleaning temporary setup files...";
           }, 540);
 
           setTimeout(() => {
-            addLog("Verifying display memory access...");
-            fileNow.textContent = "Verifying display memory access...";
+            addLog("Installation completed successfully.");
+            fileNow.textContent = "Installation completed successfully.";
           }, 820);
 
-          setTimeout(() => {
-            addLog("Fatal exception while accessing display memory.");
-            fileNow.textContent = "Fatal exception while accessing display memory.";
-          }, 1100);
-
-          setTimeout(showErrorDialog, 1450);
+          setTimeout(showFinishScreen, 1250);
         }
       }, 220);
     }
@@ -1110,18 +982,8 @@ Press any key to restart
 
     startOverlay.addEventListener("click", startExperience, { once: true });
 
-    okBtn.addEventListener("click", showBsod);
-
-    document.addEventListener("keydown", () => {
-      if (bsod.classList.contains("show")) {
-        location.reload();
-      }
-    });
-
-    document.addEventListener("click", () => {
-      if (bsod.classList.contains("show")) {
-        location.reload();
-      }
+    restartBtn.addEventListener("click", () => {
+      location.reload();
     });
 
     setInterval(moveFakeCursorRandomly, 1600);
