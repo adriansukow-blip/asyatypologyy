@@ -34,7 +34,6 @@
       display: block;
     }
 
-    /* START OVERLAY */
     #startOverlay {
       position: absolute;
       inset: 0;
@@ -69,7 +68,6 @@
       opacity: 0.95;
     }
 
-    /* BOOT SCREEN */
     #bootScreen {
       background: #000;
       color: #cfcfcf;
@@ -90,7 +88,6 @@
       animation: blink 0.9s steps(1) infinite;
     }
 
-    /* XP SETUP */
     #xpSetup {
       background: #ece9d8;
       color: #000;
@@ -296,6 +293,7 @@
       background: linear-gradient(to right, #2a8b47 0%, #4cc969 35%, #2a8b47 100%);
       position: relative;
       overflow: hidden;
+      transition: width 0.12s linear;
     }
 
     .progress-bar::after {
@@ -341,7 +339,7 @@
       overflow: hidden;
       font-family: "Lucida Console", Consolas, monospace;
       font-size: 13px;
-      line-height: 1.38;
+      line-height: 1.34;
       color: #111;
       white-space: pre-wrap;
     }
@@ -373,6 +371,101 @@
       color: #666;
       border: 1px solid #999;
       background: linear-gradient(to bottom, #f7f7f7 0%, #dddddd 100%);
+    }
+
+    /* DEVICE POPUP */
+    #devicePopup {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+    }
+
+    #devicePopup.show {
+      display: flex;
+    }
+
+    #devicePopupBox {
+      width: min(560px, calc(100vw - 30px));
+      background: #ece9d8;
+      border: 1px solid #0a246a;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.45);
+    }
+
+    .device-titlebar {
+      height: 30px;
+      background: linear-gradient(to right, #0a246a 0%, #3a6ea5 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px 0 10px;
+      box-sizing: border-box;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .device-close {
+      width: 20px;
+      height: 18px;
+      border: 1px solid #fff;
+      background: #c0c0c0;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      line-height: 1;
+      box-sizing: border-box;
+    }
+
+    .device-body {
+      padding: 18px 16px 12px;
+      display: flex;
+      gap: 14px;
+      box-sizing: border-box;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #000;
+    }
+
+    .device-icon {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border-radius: 50%;
+      background: #ffd34d;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    #devicePopupText {
+      white-space: pre-line;
+    }
+
+    .device-buttons {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px 16px;
+      box-sizing: border-box;
+    }
+
+    .device-btn {
+      min-width: 86px;
+      height: 26px;
+      font-size: 12px;
+      font-family: Tahoma, Arial, sans-serif;
+      border: 1px solid #003c74;
+      background: linear-gradient(to bottom, #fefefe 0%, #d6e8ff 100%);
+      box-shadow: inset 1px 1px 0 #fff;
+      cursor: pointer;
     }
 
     /* ERROR DIALOG */
@@ -480,60 +573,52 @@
 
     /* BSOD */
     #bsod {
-  background: #0000aa;
-  color: #ffffff;
-  font-family: "Lucida Console", Consolas, monospace;
-  box-sizing: border-box;
-  z-index: 40;
-  padding: 0;
-}
+      background: #0000aa;
+      color: #ffffff;
+      font-family: "Lucida Console", Consolas, monospace;
+      box-sizing: border-box;
+      z-index: 40;
+      padding: 0;
+    }
 
-.bsod-wrap {
-  padding: 26px 34px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-}
+    .bsod-wrap {
+      padding: 26px 34px;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+    }
 
-.bsod-header,
-.bsod-code,
-.bsod-body,
-.bsod-footer {
-  white-space: pre-line;
-}
-
-.bsod-header {
-  font-size: 21px;
-  line-height: 1.5;
-  margin-bottom: 26px;
-}
-
-.bsod-code {
-  font-size: 21px;
-  line-height: 1.5;
-  margin-bottom: 26px;
-}
-
-.bsod-body {
-  font-size: 19px;
-  line-height: 1.55;
-  margin-bottom: 24px;
-}
-
-.bsod-footer {
-  font-size: 19px;
-  line-height: 1.6;
-  margin-top: 26px;
-}
-
-    .bsod-small {
-      margin-top: 26px;
-      font-size: 18px;
-      line-height: 1.6;
+    .bsod-header,
+    .bsod-code,
+    .bsod-body,
+    .bsod-footer {
       white-space: pre-line;
     }
 
-    /* FAKE CURSOR */
+    .bsod-header {
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 26px;
+    }
+
+    .bsod-code {
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 26px;
+    }
+
+    .bsod-body {
+      font-size: 19px;
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    .bsod-footer {
+      font-size: 19px;
+      line-height: 1.6;
+      margin-top: 26px;
+    }
+
     #fakeCursor {
       position: absolute;
       width: 18px;
@@ -669,6 +754,23 @@
         <button class="xp-btn" disabled>Cancel</button>
       </div>
     </div>
+       <div id="devicePopup">
+      <div id="devicePopupBox">
+        <div class="device-titlebar">
+          <span>Windows XP Setup</span>
+          <span class="device-close">×</span>
+        </div>
+
+        <div class="device-body">
+          <div class="device-icon">i</div>
+          <div id="devicePopupText"></div>
+        </div>
+
+        <div class="device-buttons">
+          <button class="device-btn" id="deviceOkBtn">OK</button>
+        </div>
+      </div>
+    </div>
 
     <div id="errorDialog">
       <div class="dlg-titlebar">
@@ -700,15 +802,12 @@
     <div id="flash"></div>
 
     <div id="bsod" class="screen">
-  <div class="bsod-wrap">
-    <div class="bsod-header">A problem has been detected and Windows has been shut down to prevent damage to your computer.</div>
+      <div class="bsod-wrap">
+        <div class="bsod-header">A problem has been detected and Windows has been shut down to prevent damage to your computer.</div>
 
-    <div class="bsod-code">
-UNMOUNTABLE_BOOT_VOLUME
-    </div>
+        <div class="bsod-code">UNMOUNTABLE_BOOT_VOLUME</div>
 
-    <div class="bsod-body">
-If this is the first time you've seen this Stop error screen,
+        <div class="bsod-body">If this is the first time you've seen this Stop error screen,
 restart your computer. If this screen appears again, follow
 these steps:
 
@@ -720,41 +819,19 @@ If problems continue, disable or remove any newly installed hardware
 or software. Disable BIOS memory options such as caching or shadowing.
 If you need to use Safe Mode to remove or disable components, restart
 your computer, press F8 to select Advanced Startup Options, and then
-select Safe Mode.
-    </div>
+select Safe Mode.</div>
 
-    <div class="bsod-body">
-Technical information:
+        <div class="bsod-body">Technical information:
 
-*** STOP: 0x000000ED (0x81F89E30, 0xC0000032, 0x00000000, 0x00000000)
-    </div>
+*** STOP: 0x000000ED (0x81F89E30, 0xC0000032, 0x00000000, 0x00000000)</div>
 
-    <div class="bsod-body">
-Beginning dump of physical memory
-Physical memory dump complete.
-    </div>
+        <div class="bsod-body">Beginning dump of physical memory
+Physical memory dump complete.</div>
 
-    <div class="bsod-footer">
-Contact your system administrator or technical support group for further
+        <div class="bsod-footer">Contact your system administrator or technical support group for further
 assistance.
 
-Press any key to restart
-    </div>
-  </div>
-</div>
-
-      <div class="bsod-small">
-Technical information:
-
-*** STOP: 0x000000ED (0x81F89E30, 0xC0000032, 0x00000000, 0x00000000)
-
-Beginning dump of physical memory
-Physical memory dump complete.
-
-Contact your system administrator or technical support group for further
-assistance.
-
-Press any key to restart
+Press any key to restart</div>
       </div>
     </div>
 
@@ -767,68 +844,6 @@ Press any key to restart
   </div>
 
   <script>
-   function detectDeviceInfo() {
-  const ua = navigator.userAgent || "";
-
-  let deviceClass = "Desktop";
-  let deviceName = "Unknown";
-  let browser = "Unknown";
-
-  if (/iPhone/i.test(ua)) {
-    deviceClass = "Mobile";
-    deviceName = "iPhone";
-  } else if (/iPad/i.test(ua)) {
-    deviceClass = "Tablet";
-    deviceName = "iPad";
-  } else if (/Android/i.test(ua)) {
-    deviceClass = /Mobile/i.test(ua) ? "Mobile" : "Tablet";
-    deviceName = "Android device";
-  } else if (/Windows/i.test(ua)) {
-    deviceClass = "Desktop";
-    deviceName = "Windows computer";
-  } else if (/Macintosh|Mac OS X/i.test(ua)) {
-    deviceClass = "Desktop";
-    deviceName = "Mac computer";
-  }
-
-  if (/Edg/i.test(ua)) browser = "Edge";
-  else if (/Firefox/i.test(ua)) browser = "Firefox";
-  else if (/Chrome/i.test(ua) && !/Edg/i.test(ua)) browser = "Chrome";
-  else if (/Safari/i.test(ua) && !/Chrome/i.test(ua)) browser = "Safari";
-
-  return {
-    deviceClass,
-    deviceName,
-    browser,
-    display: `${screen.width} × ${screen.height}`,
-    language: navigator.language || "Unknown",
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
-    network: navigator.onLine ? "Online" : "Offline"
-  };
-}
-
-async function sendLaunchLog(eventName, migrationStatus) {
-  const info = detectDeviceInfo();
-
-  const payload = {
-    ...info,
-    eventName,
-    migrationStatus,
-    time: new Date().toLocaleString()
-  };
-
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbxIM9LoYee3abG2rOu9wDoyDrpwxiAk7zm8zsGI9Uvkmz49UsdKMTHAt-lw4CzES0R_/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {
-    console.log("Webhook error:", err);
-  }
-}
     const startOverlay = document.getElementById("startOverlay");
     const bootScreen = document.getElementById("bootScreen");
     const bootLines = document.getElementById("bootLines");
@@ -853,11 +868,17 @@ async function sendLaunchLog(eventName, migrationStatus) {
     const okBtn = document.getElementById("okBtn");
     const flash = document.getElementById("flash");
 
+    const devicePopup = document.getElementById("devicePopup");
+    const devicePopupText = document.getElementById("devicePopupText");
+    const deviceOkBtn = document.getElementById("deviceOkBtn");
+
     let progress = 0;
     let crashed = false;
     let autoCrashTriggered = false;
     let remainingMinutes = 39;
     let fakeCursorActive = false;
+    let devicePopupShown = false;
+    let devicePopupTimer = null;
     let audioCtx = null;
 
     const bootMessages = [
@@ -941,6 +962,82 @@ async function sendLaunchLog(eventName, migrationStatus) {
       "system32\\drivers\\vgaSave.sys"
     ];
 
+    function detectDeviceInfo() {
+      const ua = navigator.userAgent || "";
+      let deviceClass = "Desktop";
+      let deviceName = "Unknown";
+      let browser = "Unknown";
+      let input = "mouse / trackpad";
+
+      if (/iPhone/i.test(ua)) {
+        deviceClass = "Mobile";
+        deviceName = "iPhone";
+        input = "touch";
+      } else if (/iPad/i.test(ua)) {
+        deviceClass = "Tablet";
+        deviceName = "iPad";
+        input = "touch";
+      } else if (/Android/i.test(ua)) {
+        deviceClass = /Mobile/i.test(ua) ? "Mobile" : "Tablet";
+        deviceName = "Android device";
+        input = "touch";
+      } else if (/Windows/i.test(ua)) {
+        deviceClass = "Desktop";
+        deviceName = "Windows computer";
+      } else if (/Macintosh|Mac OS X/i.test(ua)) {
+        deviceClass = "Desktop";
+        deviceName = "Mac computer";
+      }
+
+      if (/Edg/i.test(ua)) browser = "Edge";
+      else if (/Firefox/i.test(ua)) browser = "Firefox";
+      else if (/Chrome/i.test(ua) && !/Edg/i.test(ua)) browser = "Chrome";
+      else if (/Safari/i.test(ua) && !/Chrome/i.test(ua)) browser = "Safari";
+
+      return {
+        deviceClass,
+        deviceName,
+        browser,
+        input,
+        display: `${screen.width} × ${screen.height}`,
+        language: navigator.language || "Unknown",
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
+        network: navigator.onLine ? "Online" : "Offline"
+      };
+    }
+
+    function hideDevicePopup() {
+      devicePopup.classList.remove("show");
+      if (devicePopupTimer) {
+        clearTimeout(devicePopupTimer);
+        devicePopupTimer = null;
+      }
+    }
+
+    function showDevicePopup() {
+      const info = detectDeviceInfo();
+
+      devicePopupText.textContent =
+`Информация о системе успешно получена.
+
+Device class: ${info.deviceClass}
+Device name: ${info.deviceName}
+Browser engine: ${info.browser}
+Display mode: ${info.display}
+Regional profile: ${info.language}
+Time zone: ${info.timezone}
+Network state: ${info.network}
+Input device: ${info.input}
+
+Миграция текущего окружения выполняется.`;
+
+      devicePopup.classList.add("show");
+
+      devicePopupTimer = setTimeout(() => {
+        hideDevicePopup();
+      }, 7000);
+    }
+
     function rand(min, max) {
       return Math.random() * (max - min) + min;
     }
@@ -1000,17 +1097,17 @@ async function sendLaunchLog(eventName, migrationStatus) {
       osc.stop(start + duration + 0.04);
     }
 
-    function playWindowsLikeStartup(){
-  const audio = new Audio("Windows XP Startup.wav");
-  audio.volume = 0.8;
-  audio.play().catch(()=>{});
-}
+    function playWindowsLikeStartup() {
+      const audio = new Audio("./startup.wav");
+      audio.volume = 0.8;
+      audio.play().catch(() => {});
+    }
 
-    function playErrorBeep(){
-  const audio = new Audio("Windows XP Error.wav");
-  audio.volume = 0.9;
-  audio.play().catch(()=>{});
-}
+    function playErrorBeep() {
+      const audio = new Audio("./error.wav");
+      audio.volume = 0.9;
+      audio.play().catch(() => {});
+    }
 
     function playBsodTone() {
       ensureAudioContext();
@@ -1050,23 +1147,13 @@ async function sendLaunchLog(eventName, migrationStatus) {
       const taskIndex = Math.min(tasks.length - 1, Math.floor(progress / (100 / tasks.length)));
       taskText.textContent = tasks[taskIndex];
 
-      if (Math.random() < 0.34) {
-        modeText.textContent = pick(modes);
-      }
+      if (Math.random() < 0.34) modeText.textContent = pick(modes);
+      if (Math.random() < 0.28) componentText.textContent = pick(components);
 
-      if (Math.random() < 0.28) {
-        componentText.textContent = pick(components);
-      }
-
-      if (progress < 70) {
-        statusText.textContent = "Normal";
-      } else if (progress < 78) {
-        statusText.textContent = "Optimizing";
-      } else if (progress < 82) {
-        statusText.textContent = "Applying settings";
-      } else {
-        statusText.textContent = "Warning";
-      }
+      if (progress < 70) statusText.textContent = "Normal";
+      else if (progress < 78) statusText.textContent = "Optimizing";
+      else if (progress < 82) statusText.textContent = "Applying settings";
+      else statusText.textContent = "Warning";
 
       updateRemainingTime();
       updateSteps();
@@ -1107,12 +1194,11 @@ async function sendLaunchLog(eventName, migrationStatus) {
     }
 
     function showBsod() {
-      sendLaunchLog("BSOD", "Fatal display initialization failure");
-  errorDialog.classList.remove("show");
-  hideDevicePopup();
-  fakeCursorActive = false;
-  fakeCursor.classList.remove("show");
-  flashScreen();
+      errorDialog.classList.remove("show");
+      hideDevicePopup();
+      fakeCursorActive = false;
+      fakeCursor.classList.remove("show");
+      flashScreen();
 
       setTimeout(() => {
         showScreen(bsod);
@@ -1166,6 +1252,11 @@ async function sendLaunchLog(eventName, migrationStatus) {
         if (progress > 100) progress = 100;
         updateUI();
 
+        if (!devicePopupShown && progress >= 32) {
+          devicePopupShown = true;
+          showDevicePopup();
+        }
+
         if (!autoCrashTriggered && progress >= 82) {
           autoCrashTriggered = true;
           clearInterval(progressTimer);
@@ -1207,7 +1298,6 @@ async function sendLaunchLog(eventName, migrationStatus) {
 
       const vw = window.innerWidth;
       const vh = window.innerHeight;
-
       const x = rand(vw * 0.45, vw * 0.88);
       const y = rand(vh * 0.20, vh * 0.78);
 
@@ -1217,13 +1307,12 @@ async function sendLaunchLog(eventName, migrationStatus) {
     function startExperience() {
       ensureAudioContext();
       playWindowsLikeStartup();
-      sendLaunchLog("SETUP_STARTED","Environment transfer in progress");
       startOverlay.classList.add("hidden");
       runBootSequence();
     }
 
     startOverlay.addEventListener("click", startExperience, { once: true });
-
+    deviceOkBtn.addEventListener("click", hideDevicePopup);
     okBtn.addEventListener("click", showBsod);
 
     document.addEventListener("keydown", () => {
