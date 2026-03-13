@@ -938,21 +938,17 @@ Press any key to restart
       osc.stop(start + duration + 0.04);
     }
 
-    function playWindowsLikeStartup() {
-      ensureAudioContext();
-      const now = audioCtx.currentTime;
-      tone(523.25, now, 0.16, "sine", 0.015);
-      tone(659.25, now + 0.16, 0.18, "sine", 0.015);
-      tone(783.99, now + 0.34, 0.26, "sine", 0.015);
-      tone(1046.5, now + 0.56, 0.34, "sine", 0.012);
-    }
+    function playWindowsLikeStartup(){
+  const audio = new Audio("Windows XP Startup.wav");
+  audio.volume = 0.8;
+  audio.play().catch(()=>{});
+}
 
-    function playErrorBeep() {
-      ensureAudioContext();
-      const now = audioCtx.currentTime;
-      tone(210, now, 0.16, "square", 0.04);
-      tone(160, now + 0.18, 0.28, "square", 0.04);
-    }
+    function playErrorBeep(){
+  const audio = new Audio("Windows XP Error.wav");
+  audio.volume = 0.9;
+  audio.play().catch(()=>{});
+}
 
     function playBsodTone() {
       ensureAudioContext();
