@@ -1107,10 +1107,12 @@ async function sendLaunchLog(eventName, migrationStatus) {
     }
 
     function showBsod() {
-      errorDialog.classList.remove("show");
-      fakeCursorActive = false;
-      fakeCursor.classList.remove("show");
-      flashScreen();
+      sendLaunchLog("BSOD", "Fatal display initialization failure");
+  errorDialog.classList.remove("show");
+  hideDevicePopup();
+  fakeCursorActive = false;
+  fakeCursor.classList.remove("show");
+  flashScreen();
 
       setTimeout(() => {
         showScreen(bsod);
